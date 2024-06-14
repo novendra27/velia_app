@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'register_page.dart';
 import 'login_page.dart';
 
 class CreateAccountPage extends StatelessWidget {
@@ -84,6 +85,10 @@ class CreateAccountPage extends StatelessWidget {
                     OutlinedButton(
                       onPressed: () {
                         // Navigate to Register Page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RegisterPage()),
+                        );
                       },
                       style: OutlinedButton.styleFrom(
                         padding: EdgeInsets.symmetric(

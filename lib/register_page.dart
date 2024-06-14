@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'create_account_page.dart';
-import 'register_page.dart';
+import 'login_page.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +29,7 @@ class LoginPage extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Welcome back!',
+                'Hello! ',
                 style: TextStyle(
                   fontFamily: 'Urbanist',
                   fontSize: 32,
@@ -42,7 +41,7 @@ class LoginPage extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Glad to see you, Again!',
+                'Register to get started',
                 style: TextStyle(
                   fontFamily: 'Urbanist',
                   fontSize: 32,
@@ -51,10 +50,10 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 25),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Enter your email',
+                labelText: 'Username',
                 border: OutlineInputBorder(),
               ),
               style: TextStyle(
@@ -62,10 +61,21 @@ class LoginPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Enter your password',
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+              ),
+              style: TextStyle(
+                fontFamily: 'Urbanist',
+                color: Colors.black,
+              ),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Password',
                 border: OutlineInputBorder(),
                 suffixIcon: Icon(Icons.visibility_off),
               ),
@@ -75,36 +85,33 @@ class LoginPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () {
-                  // Forgot Password functionality
-                },
-                child: Text(
-                  'Forgot Password?',
-                  style: TextStyle(
-                    fontFamily: 'Urbanist',
-                    color: Colors.black,
-                  ),
-                ),
+            SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Confirm password',
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.visibility_off),
+              ),
+              obscureText: true,
+              style: TextStyle(
+                fontFamily: 'Urbanist',
+                color: Colors.black,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25),
             ElevatedButton(
               onPressed: () {
-                // Login functionality
+                // Register functionality
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
-                padding:
-                    EdgeInsets.symmetric(vertical: 15.0, horizontal: 140.0),
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 140.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
               child: Text(
-                'Login',
+                'Register',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.normal,
@@ -113,7 +120,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 60),
+            SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -128,7 +135,7 @@ class LoginPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
-                    'Or Login with',
+                    'Or Register with',
                     style: TextStyle(
                       fontFamily: 'Urbanist',
                       color: Colors.black,
@@ -160,7 +167,7 @@ class LoginPage extends StatelessWidget {
                   child: IconButton(
                     icon: FaIcon(FontAwesomeIcons.facebook),
                     onPressed: () {
-                      // Facebook login functionality
+                      // Facebook register functionality
                     },
                   ),
                 ),
@@ -175,7 +182,7 @@ class LoginPage extends StatelessWidget {
                   child: IconButton(
                     icon: FaIcon(FontAwesomeIcons.google),
                     onPressed: () {
-                      // Google login functionality
+                      // Google register functionality
                     },
                   ),
                 ),
@@ -190,7 +197,7 @@ class LoginPage extends StatelessWidget {
                   child: IconButton(
                     icon: FaIcon(FontAwesomeIcons.apple),
                     onPressed: () {
-                      // Apple login functionality
+                      // Apple register functionality
                     },
                   ),
                 ),
@@ -199,24 +206,24 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 20),
             TextButton(
               onPressed: () {
-                // Register functionality
+                // Navigate to Login Page
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()),
+                  MaterialPageRoute(builder: (context) => LoginPage()),
                 );
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Don\'t have an account?',
+                    'Already have an account?',
                     style: TextStyle(
                       fontFamily: 'Urbanist',
                       color: Colors.black,
                     ),
                   ),
                   Text(
-                    ' Register Now',
+                    ' Login Now',
                     style: TextStyle(
                       fontFamily: 'Urbanist',
                       color: Colors.blue,
