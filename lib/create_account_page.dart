@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'login_page.dart';
+
 class CreateAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,10 @@ class CreateAccountPage extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         // Navigate to Login Page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
