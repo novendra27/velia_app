@@ -62,7 +62,7 @@ class WelcomePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   Text(
                     'The best hotel booking in this century, to accompany your vacation',
                     style: TextStyle(

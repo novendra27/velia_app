@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:velia_app/detail_kamar_page.dart';
+import 'package:velia_app/my_order_page.dart';
 
 import 'search_page.dart';
 
@@ -7,6 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white, 
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -73,34 +75,42 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  children: [
-                    TextField(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Field for Location
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: TextField(
                       decoration: InputDecoration(
-                        labelText: 'Bali',
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(10),
+                        labelText: 'Location',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.location_on),
                       ),
                       style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Colors.black,
                       ),
                     ),
-                    Divider(color: Colors.grey),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(
+                  ),
+                  SizedBox(height: 10),
+                  // Fields for Dates
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: '9/8/2024',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.all(10),
+                              labelText: 'Check-in',
+                              border: OutlineInputBorder(),
                               prefixIcon: Icon(Icons.calendar_today),
                             ),
                             style: TextStyle(
@@ -109,16 +119,19 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Container(
-                          height: 40,
-                          child: VerticalDivider(color: Colors.grey),
-                        ),
-                        Expanded(
+                      ),
+                      SizedBox(width: 5),
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: '16/8/2024',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.all(10),
+                              labelText: 'Check-out',
+                              border: OutlineInputBorder(),
                               prefixIcon: Icon(Icons.calendar_today),
                             ),
                             style: TextStyle(
@@ -127,22 +140,30 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  // Field for Room Information
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    Divider(color: Colors.grey),
-                    TextField(
+                    child: TextField(
                       decoration: InputDecoration(
-                        labelText: '1 room, 4 person',
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.all(10),
+                        labelText: 'Room & Person',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.people),
                       ),
                       style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Colors.black,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               SizedBox(height: 20),
               Center(
@@ -151,14 +172,13 @@ class HomePage extends StatelessWidget {
                     // Navigate to Search Hotels Page
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => SearchPage()),
+                      MaterialPageRoute(builder: (context) => SearchPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     padding:
-                        EdgeInsets.symmetric(vertical: 15.0, horizontal: 121.0),
+                        EdgeInsets.symmetric(vertical: 15.0, horizontal: 120.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
                     ),
@@ -167,7 +187,7 @@ class HomePage extends StatelessWidget {
                     'Search Hotels',
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.bold,
                       fontFamily: 'Urbanist',
                       color: Colors.white,
                     ),
@@ -196,7 +216,36 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(height: 20),
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate to Booking Confirmed page
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyOrderPage()),
+            );
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black,
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+          ),
+          child: Text(
+            'My Order',
+            style: TextStyle(
+              fontFamily: 'Urbanist',
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),

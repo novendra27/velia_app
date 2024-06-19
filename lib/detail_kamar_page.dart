@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
 import 'payment_page.dart';
 
 class DetailKamar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -31,7 +33,11 @@ class DetailKamar extends StatelessWidget {
                           IconButton(
                             icon: Icon(Icons.arrow_back, color: Colors.white),
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()),
+                              );
                             },
                           ),
                           Text(
@@ -61,7 +67,8 @@ class DetailKamar extends StatelessWidget {
                             SizedBox(width: 16),
                             _buildInfoBox(Icons.local_dining, 'Free Breakfast'),
                             SizedBox(width: 16),
-                            _buildInfoBox(Icons.star, '5.0', iconColor: Colors.yellow),
+                            _buildInfoBox(Icons.star, '5.0',
+                                iconColor: Colors.yellow),
                           ],
                         ),
                       ),
@@ -212,7 +219,8 @@ class DetailKamar extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoBox(IconData icon, String text, {Color iconColor = Colors.black}) {
+  Widget _buildInfoBox(IconData icon, String text,
+      {Color iconColor = Colors.black}) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
       decoration: BoxDecoration(
