@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:velia_app/detail_kamar_page.dart';
 
+import 'search_page.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -150,7 +152,7 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SearchHotelsPage()),
+                          builder: (context) => SearchPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -183,7 +185,7 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Container(
-                height: 200,
+                height: 190,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -214,10 +216,10 @@ class SpecialOfferCard extends StatelessWidget {
         );
       },
       child: Container(
-        width: 150,
+        width: 160,
         margin: EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           image: DecorationImage(
             image: AssetImage('assets/images/detail_kamar.jpg'),
             fit: BoxFit.cover,
@@ -274,23 +276,6 @@ class SpecialOfferCard extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class SearchHotelsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Search Hotels'),
-      ),
-      body: Center(
-        child: Text(
-          'Search Hotels Page',
-          style: TextStyle(fontFamily: 'Urbanist', fontSize: 24),
         ),
       ),
     );
