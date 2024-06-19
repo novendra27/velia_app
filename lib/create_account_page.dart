@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'register_page.dart';
 import 'login_page.dart';
+import 'detail_kamar_page.dart';
 
 class CreateAccountPage extends StatelessWidget {
   @override
@@ -111,6 +112,10 @@ class CreateAccountPage extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         // Continue as guest
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DetailKamar()),
+                        );
                       },
                       child: const Text(
                         'Continue as a guest',

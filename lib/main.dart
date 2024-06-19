@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:velia_app/detail_kamar_page.dart';
+import 'package:velia_app/payment_page.dart';
 
 import 'welcome_page.dart';
 // import 'create_account_page.dart';
@@ -8,7 +10,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key}); // Memastikan penggunaan 'const' yang benar
+  const MyApp({super.key}); 
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(fontFamily: 'Urbanist', fontWeight: FontWeight.normal),
         ),
       ),
-      home: WelcomePage(),
+      home: DetailKamar(),
     );
   }
 }
