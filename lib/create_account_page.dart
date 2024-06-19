@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:velia_app/home_page.dart';
 
 import 'register_page.dart';
 import 'login_page.dart';
@@ -114,7 +115,7 @@ class CreateAccountPage extends StatelessWidget {
                         // Continue as guest
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => DetailKamar()),
+                          MaterialPageRoute(builder: (context) => HomePage()),
                         );
                       },
                       child: const Text(
