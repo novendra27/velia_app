@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:velia_app/detail_kamar_page.dart';
-import 'package:velia_app/my_order_page.dart';
+import 'package:velia_app/views/pages/detail_kamar_page.dart';
+import 'package:velia_app/views/pages/my_order_page.dart';
 
 import 'search_page.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:velia_app/detail_kamar_page.dart';
+import 'package:velia_app/views/pages/detail_kamar_page.dart';
 
 class SearchPage extends StatelessWidget {
   @override

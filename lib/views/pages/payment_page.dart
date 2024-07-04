@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:velia_app/booking_confirmed_page.dart';
-import 'package:velia_app/detail_kamar_page.dart';
+import 'package:velia_app/views/pages/booking_confirmed_page.dart';
+import 'package:velia_app/views/pages/detail_kamar_page.dart';
 
 class PaymentPage extends StatelessWidget {
   @override

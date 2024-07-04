@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:velia_app/my_order_page.dart';
-// import 'package:velia_app/detail_kamar_page.dart';
-// import 'package:velia_app/home_page.dart';
-// import 'package:velia_app/payment_page.dart';
 
-import 'welcome_page.dart';
-import 'home_page.dart';
-// import 'create_account_page.dart';
+import 'views/pages/welcome_page.dart';
 
 void main() {
   runApp(MyApp());

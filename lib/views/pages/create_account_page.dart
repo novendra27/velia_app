@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:velia_app/home_page.dart';
+import 'package:velia_app/views/pages/home_page.dart';
 
 import 'register_page.dart';
 import 'login_page.dart';
-import 'detail_kamar_page.dart';
 
 class CreateAccountPage extends StatelessWidget {
   @override
