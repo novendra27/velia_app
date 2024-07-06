@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:velia_app/views/pages/detail_kamar_page.dart';
+import 'package:velia_app/views/pages/room_detail_page.dart';
 import 'package:velia_app/views/pages/my_order_page.dart';
 
 import 'search_page.dart';
@@ -261,7 +261,7 @@ class SpecialOfferCard extends StatelessWidget {
         // Add your functionality here
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DetailKamar()),
+          MaterialPageRoute(builder: (context) => RoomDetailPage()),
         );
       },
       child: Container(

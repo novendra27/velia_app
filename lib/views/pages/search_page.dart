@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:velia_app/views/pages/detail_kamar_page.dart';
+import 'package:velia_app/views/pages/room_detail_page.dart';
 
 class SearchPage extends StatelessWidget {
   @override
@@ -48,7 +48,7 @@ class HotelCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DetailKamar()),
+          MaterialPageRoute(builder: (context) => RoomDetailPage()),
         );
       },
       child: Container(

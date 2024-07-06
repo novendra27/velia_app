@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'views/pages/room_detail_page.dart';
 import 'views/pages/welcome_page.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(fontFamily: 'Urbanist', fontWeight: FontWeight.normal),
         ),
       ),
-      home: WelcomePage(),
+      home: RoomDetailPage(),
     );
   }
 }
