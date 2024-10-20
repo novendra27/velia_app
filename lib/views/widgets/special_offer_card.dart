@@ -20,17 +20,21 @@ class SpecialOfferCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final int hotelPrice = randomizeDollar();
     final String hotelImage = generateImageLink(hotelIndexImage);
+    final int discount = randomizeDiscount();
 
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => RoomDetailPage(
-                    hotelName: hotelName,
-                    hotelCity: hotelCity,
-                    hotelDescription: hotelDescription,
-                  )),
+            builder: (context) => RoomDetailPage(
+              hotelName: hotelName,
+              hotelCity: hotelCity,
+              hotelDescription: hotelDescription,
+              hotelPrice: hotelPrice,
+              hotelImage: hotelImage,
+            ),
+          ),
         );
       },
       child: Container(
@@ -82,9 +86,9 @@ class SpecialOfferCard extends StatelessWidget {
                   color: const Color.fromARGB(150, 0, 0, 0),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Text(
-                  '20% Off',
-                  style: TextStyle(
+                child: Text(
+                  '$discount% Off',
+                  style: const TextStyle(
                     fontFamily: 'Urbanist',
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
@@ -120,5 +124,13 @@ String generateImageLink(index) {
   ];
   String name = options[index];
   String result = 'assets/images/$name.jpg';
+  return result;
+}
+
+int randomizeDiscount() {
+  final random = Random();
+  int min = 20;
+  int max = 70;
+  int result = min + (random.nextInt((max - min) ~/ 5 + 1) * 5);
   return result;
 }
