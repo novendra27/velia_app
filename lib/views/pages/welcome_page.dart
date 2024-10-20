@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'create_account_page.dart';
 
 class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,14 +11,14 @@ class WelcomePage extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CreateAccountPage()),
+            MaterialPageRoute(builder: (context) =>const  CreateAccountPage()),
           );
         },
         child: Stack(
           children: [
             // Background Image
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/welcome_img.jpg'),
                   fit: BoxFit.cover,
@@ -38,8 +39,8 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
             // Text Content
-            Padding(
-              padding: const EdgeInsets.all(20.0),
+            const Padding(
+              padding: EdgeInsets.all(20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +48,7 @@ class WelcomePage extends StatelessWidget {
                   Text(
                     'Welcome to',
                     style: TextStyle(
-                      color: Colors.white, // Change font color to black
+                      color: Colors.white, 
                       fontSize: 35,
                       fontFamily: 'Urbanist',
                       fontWeight: FontWeight.bold,
@@ -56,7 +57,7 @@ class WelcomePage extends StatelessWidget {
                   Text(
                     'Velia',
                     style: TextStyle(
-                      color: Colors.white, // Change font color to black
+                      color: Colors.white, 
                       fontSize: 60,
                       fontFamily: 'Urbanist',
                       fontWeight: FontWeight.bold,
@@ -66,7 +67,7 @@ class WelcomePage extends StatelessWidget {
                   Text(
                     'The best hotel booking in this century, to accompany your vacation',
                     style: TextStyle(
-                      color: Colors.white, // Change font color to black
+                      color: Colors.white, 
                       fontSize: 20,
                       fontFamily: 'Urbanist',
                     ),

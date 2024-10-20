@@ -1,246 +1,236 @@
 import 'package:flutter/material.dart';
-import 'package:velia_app/models/hotels_model.dart';
-import 'package:velia_app/services/hotel_api_service.dart';
-
 import 'home_page.dart';
 import 'payment_page.dart';
 
 class RoomDetailPage extends StatefulWidget {
+  
+  final String hotelName;
+  final String hotelCity;
+  final String hotelDescription;
+
+  const RoomDetailPage({super.key, required this.hotelName, required this.hotelCity, required this.hotelDescription});
+
   @override
-  _RoomDetailState createState() => _RoomDetailState();
+  State<RoomDetailPage> createState() => _RoomDetailPageState();
 }
 
-class _RoomDetailState extends State<RoomDetailPage> {
-  final HotelApiService _hotelApiService = HotelApiService();
-  List<Hotel> hotels = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchHotels();
-  }
-
-  Future<void> _fetchHotels() async {
-    final fetchedHotels = await _hotelApiService.getHotels();
-    setState(() {
-      hotels = fetchedHotels;
-    });
-  }
-
+class _RoomDetailPageState extends State<RoomDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: hotels.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : Stack(
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            padding: const EdgeInsets.only(bottom: 80),
+            child: Column(
               children: [
-                SingleChildScrollView(
-                  padding: const EdgeInsets.only(bottom: 80),
-                  child: Column(
-                    children: [
-                      Stack(
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(10.0),
+                        bottomRight: Radius.circular(10.0),
+                      ),
+                      child: Image.asset('assets/images/detail_kamar.jpg'),
+                    ),
+                    Positioned(
+                      top: 40,
+                      left: 10,
+                      child: Row(
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(10.0),
-                              bottomRight: Radius.circular(10.0),
-                            ),
-                            child: Image.asset('assets/images/detail_kamar.jpg'),
+                          IconButton(
+                            icon: Icon(Icons.arrow_back, color: Colors.white),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()),
+                              );
+                            },
                           ),
-                          Positioned(
-                            top: 40,
-                            left: 10,
-                            child: Row(
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.arrow_back, color: Colors.white),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => HomePage()),
-                                    );
-                                  },
-                                ),
-                                Text(
-                                  'Back',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Urbanist',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ],
+                          Text(
+                            'Back',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Urbanist',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  _buildInfoBox(Icons.wifi, 'Free Wifi'),
-                                  SizedBox(width: 16),
-                                  _buildInfoBox(Icons.local_dining, 'Free Breakfast'),
-                                  SizedBox(width: 16),
-                                  _buildInfoBox(Icons.star, '5.0', iconColor: Colors.yellow),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  hotels[0].name,
-                                  style: TextStyle(
-                                    fontFamily: 'Urbanist',
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  '\$200.0',
-                                  style: TextStyle(
-                                    fontFamily: 'Urbanist',
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Icon(Icons.location_on, size: 16, color: Colors.grey),
-                                SizedBox(width: 4),
-                                Text(
-                                  hotels[0].city,
-                                  style: TextStyle(
-                                    fontFamily: 'Urbanist',
-                                    fontSize: 16,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 25),
-                            Text(
-                              'Description',
-                              style: TextStyle(
-                                fontFamily: 'Urbanist',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              hotels[0].hotelDescription,
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                fontFamily: 'Urbanist',
-                                fontSize: 16,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            SizedBox(height: 35),
-                            Text(
-                              'Preview',
-                              style: TextStyle(
-                                fontFamily: 'Urbanist',
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 8),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    // Navigate to another room detail
-                                  },
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    child: Image.asset('assets/images/preview1.jpg',
-                                        width: 100, height: 100),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    // Navigate to another room detail
-                                  },
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    child: Image.asset('assets/images/preview2.jpg',
-                                        width: 100, height: 100),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    // Navigate to another room detail
-                                  },
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    child: Image.asset('assets/images/preview3.jpg',
-                                        width: 100, height: 100),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            _buildInfoBox(Icons.wifi, 'Free Wifi'),
+                            SizedBox(width: 16),
+                            _buildInfoBox(Icons.local_dining, 'Free Breakfast'),
+                            SizedBox(width: 16),
+                            _buildInfoBox(Icons.star, '5.0',
+                                iconColor: Colors.yellow),
                           ],
                         ),
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            widget.hotelName,
+                            style: TextStyle(
+                              fontFamily: 'Urbanist',
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '\$200.0',
+                            style: TextStyle(
+                              fontFamily: 'Urbanist',
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Icon(Icons.location_on, size: 16, color: Colors.grey),
+                          SizedBox(width: 4),
+                          Text(
+                            widget.hotelCity,
+                            style: TextStyle(
+                              fontFamily: 'Urbanist',
+                              fontSize: 16,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 25),
+                      Text(
+                        'Description',
+                        style: TextStyle(
+                          fontFamily: 'Urbanist',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        widget.hotelDescription,
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontFamily: 'Urbanist',
+                          fontSize: 16,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      SizedBox(height: 35),
+                      Text(
+                        'Preview',
+                        style: TextStyle(
+                          fontFamily: 'Urbanist',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to another room detail
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Image.asset('assets/images/preview1.jpg',
+                                  width: 100, height: 100),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to another room detail
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Image.asset('assets/images/preview2.jpg',
+                                  width: 100, height: 100),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to another room detail
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Image.asset('assets/images/preview3.jpg',
+                                  width: 100, height: 100),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    padding: const EdgeInsets.all(15.0),
-                    color: Colors.white,
-                    child: Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => PaymentPage()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 130.0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                        child: Text(
-                          'Booking Now',
-                          style: TextStyle(
-                            fontFamily: 'Urbanist',
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              padding: const EdgeInsets.all(15.0),
+              color: Colors.white,
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PaymentPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 15.0, horizontal: 130.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  child: Text(
+                    'Booking Now',
+                    style: TextStyle(
+                      fontFamily: 'Urbanist',
+                      fontSize: 18,
+                      color: Colors.white,
                     ),
                   ),
                 ),
-              ],
+              ),
             ),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _buildInfoBox(IconData icon, String text, {Color iconColor = Colors.black}) {
+  Widget _buildInfoBox(IconData icon, String text,
+      {Color iconColor = Colors.black}) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 5.0),
       decoration: BoxDecoration(

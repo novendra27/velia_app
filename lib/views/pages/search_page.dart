@@ -46,10 +46,10 @@ class HotelCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => RoomDetailPage()),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => RoomDetailPage()),
+        // );
       },
       child: Container(
         decoration: BoxDecoration(

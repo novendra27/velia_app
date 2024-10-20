@@ -5,6 +5,8 @@ import 'register_page.dart';
 import 'login_page.dart';
 
 class CreateAccountPage extends StatelessWidget {
+  const CreateAccountPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class CreateAccountPage extends StatelessWidget {
         children: [
           // Background Image
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/welcome_img.jpg'),
                 fit: BoxFit.cover,
@@ -45,7 +47,7 @@ class CreateAccountPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Align(
+                    const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Create Your Account',
@@ -57,7 +59,7 @@ class CreateAccountPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     ElevatedButton(
                       onPressed: () {
                         // Navigate to Login Page
@@ -68,7 +70,7 @@ class CreateAccountPage extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                             vertical: 15.0, horizontal: 140.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
@@ -83,7 +85,7 @@ class CreateAccountPage extends StatelessWidget {
                             color: Colors.white),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     OutlinedButton(
                       onPressed: () {
                         // Navigate to Register Page
@@ -93,9 +95,9 @@ class CreateAccountPage extends StatelessWidget {
                         );
                       },
                       style: OutlinedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
+                        padding:const  EdgeInsets.symmetric(
                             vertical: 15.0, horizontal: 130.0),
-                        side: BorderSide(color: Colors.black),
+                        side:const  BorderSide(color: Colors.black),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
@@ -109,7 +111,7 @@ class CreateAccountPage extends StatelessWidget {
                             color: Colors.black),
                       ),
                     ),
-                    SizedBox(height: 25),
+                    const SizedBox(height: 25),
                     TextButton(
                       onPressed: () {
                         // Continue as guest
