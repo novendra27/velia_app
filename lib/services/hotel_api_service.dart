@@ -22,7 +22,7 @@ class HotelApiService {
           .map((hotel) => Hotel.fromJson(hotel))
           .toList();
     } catch (e) {
-      print('Error: $e');
+      // print('Error: $e');
       return [];
     }
   }

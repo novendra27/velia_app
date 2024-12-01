@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:velia_app/views/pages/booking_confirmed_page.dart';
-import 'package:velia_app/views/pages/room_detail_page.dart';
 
 class PaymentPage extends StatelessWidget {
+  final String hotelName;
+  final String hotelCity;
+  final int hotelPrice;
+
+  const PaymentPage({
+    super.key,
+    required this.hotelName,
+    required this.hotelCity,
+    required this.hotelPrice,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, 
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => RoomDetailPage()),
-            // );
+            Navigator.pop(context);
           },
         ),
         title: Text(
