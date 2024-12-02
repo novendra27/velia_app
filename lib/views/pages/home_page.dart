@@ -3,9 +3,9 @@ import 'package:velia_app/views/pages/my_order_page.dart';
 import 'package:velia_app/models/hotels_model.dart';
 import 'package:velia_app/services/hotel_api_service.dart';
 import 'package:velia_app/views/widgets/search_textfield.dart';
-import 'package:velia_app/views/widgets/special_offer_card.dart';
+import 'package:velia_app/views/widgets/hotel_list_card.dart';
 
-import 'search_page.dart';
+import 'list_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -64,11 +64,15 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: 10),
                     const SearchTextfield(),
                     const SizedBox(height: 20),
-                    const SearchButton(),
+                    SearchButton(hotels: hotels),
                     const SizedBox(height: 20),
-                    const SpecialOfferText(),
+                    HeaderCardText(hotels: hotels, headerText: 'Special offer', indexHotel: 0),
                     const SizedBox(height: 10),
-                    HotelList(hotels: hotels),
+                    HotelList(hotels: hotels, hotelIndex: 0),
+                    const SizedBox(height: 20),
+                    HeaderCardText(hotels: hotels, headerText: 'Popular Hotels', indexHotel: 10),
+                    const SizedBox(height: 10),
+                    HotelList(hotels: hotels, hotelIndex: 10),
                     const SizedBox(height: 20),
                   ],
                 ),
@@ -116,13 +120,16 @@ class BottomNavBar extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class HotelList extends StatelessWidget {
-  const HotelList({
+  List<Hotel> hotels;
+  int hotelIndex;
+
+  HotelList({
     super.key,
     required this.hotels,
+    required this.hotelIndex,
   });
-
-  final List<Hotel> hotels;
 
   @override
   Widget build(BuildContext context) {
@@ -130,13 +137,13 @@ class HotelList extends StatelessWidget {
       height: 190,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 7,
+        itemCount: 5,
         itemBuilder: (context, index) {
-          return SpecialOfferCard(
-            hotelName: hotels[index].name,
-            hotelCity: hotels[index].city,
-            hotelDescription: hotels[index].hotelDescription,
-            hotelIndexImage: index,
+          return HotelListCard(
+            hotelName: hotels[index + hotelIndex].name,
+            hotelCity: hotels[index + hotelIndex].city,
+            hotelDescription: hotels[index + hotelIndex].hotelDescription,
+            hotelIndexImage: index + hotelIndex,
           );
         },
       ),
@@ -144,57 +151,69 @@ class HotelList extends StatelessWidget {
   }
 }
 
-class SpecialOfferText extends StatelessWidget {
-  const SpecialOfferText({
+// ignore: must_be_immutable
+class HeaderCardText extends StatelessWidget {
+  List<Hotel> hotels;
+  String headerText;
+  int indexHotel;
+
+  HeaderCardText({
+    super.key,
+    required this.headerText,
+    required this.hotels,
+    required this.indexHotel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          headerText,
+          style: const TextStyle(
+            fontFamily: 'Urbanist',
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      ListPage(headerText: headerText, hotels: hotels, indexHotel: indexHotel)),
+            );
+          },
+          child: const Text(
+            "View All",
+            style: TextStyle(
+              fontFamily: 'Urbanist',
+              fontSize: 16,
+              color: Colors.grey,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Header extends StatelessWidget {
+  const Header({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return const Text(
-      'Special offer',
+      'Let Explore the world!',
       style: TextStyle(
         fontFamily: 'Urbanist',
-        fontSize: 22,
         fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
-class SearchButton extends StatelessWidget {
-  const SearchButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => SearchPage()),
-          );
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black,
-          padding: const EdgeInsets.symmetric(
-              vertical: 15.0, horizontal: 120.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-        ),
-        child: const Text(
-          'Search Hotels',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Urbanist',
-            color: Colors.white,
-          ),
-        ),
+        fontSize: 32,
       ),
     );
   }
@@ -242,19 +261,41 @@ class BookingType extends StatelessWidget {
   }
 }
 
-class Header extends StatelessWidget {
-  const Header({
-    super.key,
-  });
+// ignore: must_be_immutable
+class SearchButton extends StatelessWidget {
+  List<Hotel> hotels;
+
+  SearchButton({super.key, required this.hotels});
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      'Let Explore the world!',
-      style: TextStyle(
-        fontFamily: 'Urbanist',
-        fontWeight: FontWeight.bold,
-        fontSize: 32,
+    return Center(
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    ListPage(headerText: 'Search Result', hotels: hotels, indexHotel: 4, )),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.black,
+          padding:
+              const EdgeInsets.symmetric(vertical: 15.0, horizontal: 120.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+        ),
+        child: const Text(
+          'Search Hotels',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Urbanist',
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
