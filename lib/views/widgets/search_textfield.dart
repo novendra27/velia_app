@@ -11,11 +11,11 @@ class SearchTextfield extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 5),
-          decoration: BoxDecoration(
+          margin: const EdgeInsets.symmetric(horizontal: 5),
+          decoration: const BoxDecoration(
             color: Colors.white,
           ),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
               labelText: 'Location',
               border: OutlineInputBorder(),
@@ -27,17 +27,17 @@ class SearchTextfield extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(
           children: [
             Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 5),
+                margin: const EdgeInsets.symmetric(horizontal: 5),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: TextField(
+                child: const TextField(
                   decoration: InputDecoration(
                     labelText: 'Check-in',
                     border: OutlineInputBorder(),
@@ -50,15 +50,15 @@ class SearchTextfield extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
             Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 5),
+                margin: const EdgeInsets.symmetric(horizontal: 5),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: TextField(
+                child: const TextField(
                   decoration: InputDecoration(
                     labelText: 'Check-out',
                     border: OutlineInputBorder(),
@@ -73,14 +73,14 @@ class SearchTextfield extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 5),
+          margin: const EdgeInsets.symmetric(horizontal: 5),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
               labelText: 'Room & Person',
               border: OutlineInputBorder(),

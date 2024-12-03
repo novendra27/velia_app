@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:velia_app/views/pages/room_detail_page.dart';
 import 'dart:math';
 
-class SpecialOfferCard extends StatelessWidget {
+class HotelListCard extends StatelessWidget {
   final String hotelName;
   final String hotelCity;
   final String hotelDescription;
   final int hotelIndexImage;
 
-  const SpecialOfferCard({
+  const HotelListCard({
     super.key,
     required this.hotelName,
     required this.hotelCity,
@@ -67,7 +67,7 @@ class SpecialOfferCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  "$hotelName\n\$$hotelPrice",
+                  "${hotelName.length > 14 ? '${hotelName.substring(0, 14)}...' : hotelName}\n\$$hotelPrice",
                   style: const TextStyle(
                     fontFamily: 'Urbanist',
                     fontWeight: FontWeight.bold,
@@ -120,7 +120,21 @@ String generateImageLink(index) {
     'hotel3',
     'hotel4',
     'hotel5',
-    'hotel6'
+    'hotel6',
+    'hotel7',
+    'hotel8',
+    'hotel9',
+    'hotel10',
+    'hotel11',
+    'hotel12',
+    'hotel13',
+    'hotel14',
+    'hotel15',
+    'hotel16',
+    'hotel17',
+    'hotel18',
+    'hotel19',
+    'hotel20',
   ];
   String name = options[index];
   String result = 'assets/images/$name.jpg';

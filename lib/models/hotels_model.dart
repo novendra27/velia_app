@@ -32,5 +32,4 @@ class Hotel {
       'hotel_description': hotelDescription,
     };
   }
-
 }
