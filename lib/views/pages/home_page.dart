@@ -66,11 +66,17 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: 20),
                     SearchButton(hotels: hotels),
                     const SizedBox(height: 20),
-                    HeaderCardText(hotels: hotels, headerText: 'Special offer', indexHotel: 0),
+                    HeaderCardText(
+                        hotels: hotels,
+                        headerText: 'Special offer',
+                        indexHotel: 0),
                     const SizedBox(height: 10),
                     HotelList(hotels: hotels, hotelIndex: 0),
                     const SizedBox(height: 20),
-                    HeaderCardText(hotels: hotels, headerText: 'Popular Hotels', indexHotel: 10),
+                    HeaderCardText(
+                        hotels: hotels,
+                        headerText: 'Popular Hotels',
+                        indexHotel: 10),
                     const SizedBox(height: 10),
                     HotelList(hotels: hotels, hotelIndex: 10),
                     const SizedBox(height: 20),
@@ -182,8 +188,10 @@ class HeaderCardText extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      ListPage(headerText: headerText, hotels: hotels, indexHotel: indexHotel)),
+                  builder: (context) => ListPage(
+                      headerText: headerText,
+                      hotels: hotels,
+                      indexHotel: indexHotel)),
             );
           },
           child: const Text(
@@ -209,7 +217,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      'Let Explore the world!',
+      "Let's Explore the world!",
       style: TextStyle(
         fontFamily: 'Urbanist',
         fontWeight: FontWeight.bold,
@@ -275,8 +283,11 @@ class SearchButton extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    ListPage(headerText: 'Search Result', hotels: hotels, indexHotel: 4, )),
+                builder: (context) => ListPage(
+                      headerText: 'Search Result',
+                      hotels: hotels,
+                      indexHotel: 4,
+                    )),
           );
         },
         style: ElevatedButton.styleFrom(

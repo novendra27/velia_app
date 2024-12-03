@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:velia_app/models/hotels_model.dart';
 import 'package:velia_app/views/widgets/hotel_list_card.dart';
-// import 'package:velia_app/views/pages/room_detail_page.dart';
 
 // ignore: must_be_immutable
 class ListPage extends StatelessWidget {
