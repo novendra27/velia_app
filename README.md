@@ -11,7 +11,7 @@
 2. **Instalasi**
    - Clone repositori ini ke perangkat lokal Anda menggunakan perintah:
      ```bash
-     git clone https://github.com/username/velia_app.git
+     git clone https://github.com/novendra27/velia_app.git
      ```
    
    - Navigasi ke direktori proyek:
